@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../CSS/Shared/root.css">
+    <link rel="stylesheet" href="../CSS/Shared/style.css">
+    <link rel="stylesheet" href="../CSS/Shared/mainNav.css">
+    <link rel="stylesheet" href="../CSS/Statistics/statisticsContainer.css">
+    <link rel="stylesheet" href="../CSS/Statistics/statisticsCalendar.css">
+    <!-- Icon Script  -->
+    <script src="https://kit.fontawesome.com/54cbe89854.js" crossorigin="anonymous"></script>
+    <!-- Jquery Script -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <!-- Calendar Script -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <!-- Chart Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <!-- JavaScript Scripts -->
+    <script src="../JavaScript/Shared/dropdownCurrency.js"></script>
+    <script src="../JavaScript/Shared/ballsAnimation.js"></script>
+    <script src="../JavaScript/Statistics/fetchChartData.js"></script>
+    <script src="../JavaScript/Statistics/updateCharts.js"></script>
+    <script src="../JavaScript/Statistics/calendarStatistics.js"></script>
+    <script src="../JavaScript/Authentification/fetchCredentials.js"></script>
+    <script src="../JavaScript/Account/userData.js"></script>
+    <script src="../JavaScript/Shared/checkSession.js"></script>
+
+    <title>Document</title>
+</head>
+
+<body onload='checkSession(),getCurrentCurrency(),calendarDateStart(),calendarDateEnd(),ballsAnimation()'>
+
+    <div id="main-nav">
+        <ul id="navTitle" onclick="goToHome()">
+            <li><i class="fa-solid fa-dollar-sign fa-2x"></i></li>
+            <li>
+                <h1>Spendings <span class="word">Tracker</span></h1>
+            </li>
+        </ul>
+
+        <ul>
+            <div class="dropdown">
+                <button onclick="showCurrencyDropdown()" class="dropbtn" id="dropbtn">.</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="#" onclick='changeCurrency("RON"),updateSelectedChart(selectedChart)'>RON</a>
+                    <a href="#" onclick='changeCurrency("EUR"),updateSelectedChart(selectedChart)'>EUR</a>
+                    <a href="#" onclick='changeCurrency("USD"),updateSelectedChart(selectedChart)'>USD</a>
+                    <a href="#" onclick='changeCurrency("GBP"),updateSelectedChart(selectedChart)'>GBP</a>
+                </div>
+            </div>
+            <li><a href="index.html">Spendings</a></li>
+            <li><a class="current" href="statistics.html">Statistics</a></li>
+            <li><a href="account.html">Account</a></li>
+            <li><a href="login_register.html" onclick="logout()">Log out</a></li>
+        </ul>
+    </div>
+
+    <div class="flex-parent-element">
+        <div class="flex-child-element left left">
+            <ul class="chartType">
+                <h1>Choose Chart Type</h1>
+                <li><button onclick="displayPieChart(), updateSelectedChart('pie')">Pie Chart</button></li>
+                <li><button onclick="displayBarChart(), updateSelectedChart('bar')">Bar Chart</button></li>
+                <li><button onclick="displayLineChart(), updateSelectedChart('line')">Line Chart</button></li>
+            </ul>
+            <div class="intervalSelector">
+                <form>
+                    <h2>Select Date Range</h2>
+                    <h2>For Data</h2>
+                    <input type="text" name="calendar" size="22" id="date_start" onchange="functionMinDate(), updateSelectedChart(selectedChart)" readonly>
+                    <input type="text" name="calendar" size="22" id="date_end" onchange=" updateSelectedChart(selectedChart)" readonly>
+                </form>
+            </div>
+        </div>
+        <div class="flex-child-element right">
+            <canvas class="charts" id="pieChart" style="display:block"></canvas>
+            <canvas class="charts" id="barChart" style="display:none"></canvas>
+            <canvas class="charts" id="lineChart" style="display:none"></canvas>
+        </div>
+    </div>
+
+    <script src="../JavaScript/Statistics/charts.js"></script>
+    <script src="../JavaScript/Statistics/chartsButton.js"></script>
+</body>
+
+</html>

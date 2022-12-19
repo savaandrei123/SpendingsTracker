@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../CSS/Shared/root.css">
+    <link rel="stylesheet" href="../CSS/Shared/style.css">
+    <link rel="stylesheet" href="../CSS/Shared/mainNav.css">
+    <link rel="stylesheet" href="../CSS/Index/mainContainers.css">
+    <link rel="stylesheet" href="../CSS/Index/cardMonths.css">
+    <link rel="stylesheet" href="../CSS/Index/cardDays.css">
+    <link rel="stylesheet" href="../CSS/Index/timeframe.css">
+    <link rel="stylesheet" href="../CSS/Index/rightcard.css">
+    <link rel="stylesheet" href="../CSS/Index/popup.css">
+    <!-- Icon Script  -->
+    <script src="https://kit.fontawesome.com/54cbe89854.js" crossorigin="anonymous"></script>
+    <!-- Jquery Script -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <!-- Calendar Scripts -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <!-- JavaScript Scripts -->
+    <script src="../JavaScript/Shared/ballsAnimation.js"></script>
+    <script src="../JavaScript/Shared/dropdownCurrency.js"></script>
+
+    <script src="../JavaScript/Index/initIndex.js"></script>
+    <script src="../JavaScript/Index/generateMonth.js"></script>
+    <script src="../JavaScript/Index/generateMonthDays.js"></script>
+    <script src="../JavaScript/Index/changeSelectedYear.js"></script>
+    <script src="../JavaScript/Index/fetchSpendings.js"></script>
+    <script src="../JavaScript/Index/dropdownSpendingsFilters.js"></script>
+    <script src="../JavaScript/Index/insertCategories.js"></script>
+    <script src="../JavaScript/Index/generateSpendingCards.js"></script>
+    <script src="../JavaScript/Index/calendarPopup.js"></script>
+    <script src="../JavaScript/Shared/loadingAnimation.js"></script>
+    <script src="../JavaScript/Index/deleteSpendings.js"></script>
+    <script src="../JavaScript/Index/addSpending.js"></script>
+    <script src="../JavaScript/Index/editSpending.js"></script>
+    <script src="../JavaScript/Index/popupAddEditSpending.js"></script>
+    <script src="../JavaScript/Authentification/fetchCredentials.js"></script>
+    <script src="../JavaScript/Authentification/login_register.js"></script>
+    <script src="../JavaScript/Account/userData.js"></script>
+    <script src="../JavaScript/Shared/checkSession.js"></script>
+
+
+
+    <title>Spendings Tracker</title>
+</head>
+
+<body onload='checkSession(),initializeIndexJS()'>
+
+    <div id="main-nav">
+        <ul id="navTitle" onclick="goToHome()">
+            <li><i class="fa-solid fa-dollar-sign fa-2x"></i></li>
+            <li>
+                <h1>Spendings <span class="word">Tracker</span></h1>
+            </li>
+        </ul>
+
+        <ul>
+            <div class="dropdown">
+                <button onclick="showCurrencyDropdown()" class="dropbtn" id="dropbtn">.</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="#" onclick='changeCurrency("RON"), updateValues()'>RON</a>
+                    <a href="#" onclick='changeCurrency("EUR"), updateValues()'>EUR</a>
+                    <a href="#" onclick='changeCurrency("USD"), updateValues()'>USD</a>
+                    <a href="#" onclick='changeCurrency("GBP"), updateValues()'>GBP</a>
+                </div>
+            </div>
+
+            <li><a class="current" href="index.html">Spendings</a></li>
+            <li><a href="statistics.html">Statistics</a></li>
+            <li><a href="account.html">Account</a></li>
+            <li><a href="login_register.html" onclick="logout()">Log Out</a></li>
+        </ul>
+    </div>
+
+    <div class="flex-parent-element">
+        <div class="flex-child-element left">
+            <div id="timeframe-container">
+                <button onclick="decreaseYearNr()" type="button" class="btn-timeframe"><i class="fa-sharp fa-solid fa-arrow-left fa-3x"></i></button>
+                <h2 id="timeframe">2022</h2>
+                <button onclick="increaseYearNr()" type="button" class="btn-timeframe"><i class="fa-sharp fa-solid fa-arrow-right fa-3x" ></i></button>
+            </div>
+            <div class="cards-month-container" id="cards-month">
+                <!-- Insert With Js -->
+            </div>
+            <h1 id="totalMonth" class="total">
+                <!-- Insert With Js -->
+            </h1>
+
+            <div class="cards-days-container" id="days-month">
+                <!-- Insert With Js -->
+            </div>
+        </div>
+        <div class="flex-child-element right">
+            <div id="filter">
+                <p class="filterText">Filter By Category:</p>
+                <div class="dropdownCategoryFilter">
+                    <button onclick="showCategoriesDropdown()" class="dropbtnCategoryFilter" id="dropbtnCategoryFilter">All</button>
+                    <div id="myDropdownCategoryFilter" class="dropdownCategoryFilter-content">
+                        <!-- Insert With Js -->
+                    </div>
+                </div>
+                <p class="filterText">Sort by:</p>
+                <div class="dropdownOrderFilter">
+                    <button onclick="showOrderDropdown()" class="dropbtnOrderFilter" id="dropbtnOrderFilter">Default</button>
+                    <div id="myDropdownOrderFilter" class="dropdownOrderFilter-content">
+                        <a href="#">Default</a>
+                        <a href="#">Low To High</a>
+                        <a href="#">High To Low</a>
+                    </div>
+                </div>
+            </div>
+            <div id="dayTotal">
+                <!-- Insert With Js -->
+            </div>
+            <div id="cards">
+                <!-- Insert With Js -->
+            </div>
+            <div id="modalEdit" class="modalEdit">
+                <div class="modalContent">
+                    <div class="contactForm">
+                        <a onclick="closePopupEditSpending()" class="close">&times;</a>
+                        <form class="popupForm">
+                            <h2>Update Spending</h2>
+                            <div>
+                                <label for="name" class="spanText">Name:
+                                    <input id="nameEditSpending" type="text" name="name" placeholder="Product/Service Name.">
+                                </label>
+                                <label for="value" class="spanText">Value(<span id="popupCurencyEdit"></span>):
+                                        <input id="valueEditSpending" step="1" pattern="^\d*(\.\d{0,2})?$" type="number" name="value" placeholder="How much it costs?">
+                                </label>
+                                <label class="spanText" for="category">Category:
+                                    <select name="category" id="categoryEditSpending">
+                                        <!-- Insert With Js -->
+                                    </select>
+                                </label>
+                                <label for="date" class="spanText">Date: 
+                                    <input type="text" name="date" size="22" id="dateEditPopup" readonly>
+                                </label>
+                            </div>
+                            <input type="button" onclick="inputValidateEdit()" id="btnPopupEdit" value="Update"></input>
+                            <div id="errorMessageEdit">
+                                <div class="errorMessageContainer"><i class='fa-solid fa-triangle-exclamation fa-2x'></i> <span id="insertErrorEdit"></span> <i class='fa-solid fa-triangle-exclamation fa-2x'></i></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div id="addButton">
+                <button onclick="openPopupAddSpending(),calendarPopup()" class="addButon" data-modal="modalAdd" id="btnOpenForm"><i class='fas fa-plus fa-2x' ></i></button>
+                <div id="modalAdd" class="modal">
+                    <div class="modalContent">
+                        <div class="contactForm">
+                            <a onclick="closePopupAddSpending()" class="close">&times;</a>
+                            <form class="popupForm">
+                                <h2>Add Spending</h2>
+                                <div>
+                                    <label for="name" class="spanText">Name:
+                                        <input id="nameAddSpending" type="text" name="name" placeholder="Product/Service Name.">
+                                    </label>
+                                    <label for="value" class="spanText">Value(<span id="popupCurency"></span>):
+                                            <input id="valueAddSpending" step="1" type="number" name="value" pattern="^\d*(\.\d{0,2})?$" placeholder="How much it costs?">
+                                    </label>
+                                    <label class="spanText" for="category">Category:
+                                        <select name="category" id="categoryAddSpending">
+                                            <!-- Insert With Js -->
+                                        </select>
+                                    </label>
+                                    <label for="date" class="spanText">Date: 
+                                        <input type="text" name="date" size="22" id="datePopup" readonly>
+                                    </label>
+                                </div>
+                                <input type="button" onclick="inputValidate()" id="btnPopup" value="Add"></input>
+                                <div id="errorMessage">
+                                    <div class="errorMessageContainer"><i class='fa-solid fa-triangle-exclamation fa-2x'></i> <span id="insertError"></span> <i class='fa-solid fa-triangle-exclamation fa-2x'></i></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

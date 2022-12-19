@@ -1,0 +1,29 @@
+#timeframe-container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    font-size: 48rem;
+    padding: 10px 10px;
+}
+
+#timeframe-container h2 {
+    font-size: 64px;
+    text-align: center;
+    /* text-shadow: 2px 2px 8px var(--primary-color); */
+    text-shadow: 2px 2px 4px var(--primary-color), 2px 2px 8px var(--secondary-color);
+}
+
+.btn-timeframe {
+    background: var(--background-color);
+    color: black;
+    border: none;
+    font-size: 20px;
+    padding: 0px 20px;
+    cursor: pointer;
+}
+
+.btn-timeframe:hover {
+    color: black;
+    background: #E8E8E8;
+}

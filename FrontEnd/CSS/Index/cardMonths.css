@@ -1,0 +1,59 @@
+.cards-month-container {
+    display: grid;
+    grid-template-columns: repeat(6, auto);
+    grid-template-rows: 1fr 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 20px;
+    margin-right: 15px;
+}
+
+.cards-month-container .card-month {
+    background: var(--primary-color);
+    color: black;
+    font-size: 19px;
+    font-weight: bold;
+    padding: 0px 0px;
+    height: 52px;
+    width: 120px;
+    text-align: center;
+    align-items: center;
+    border: 2px solid black;
+}
+
+.cards-month-container .card-month:nth-child(odd) {
+    background: var(--secondary-color);
+}
+
+.cards-month-container .card-month:hover {
+    background: var(--background-color) !important;
+    border: var(--secondary-color) 2px solid;
+}
+
+.cards-month-container .card-month:nth-child(odd):hover {
+    border: var(--primary-color) 2px solid;
+}
+
+.cards-month-container .card-month input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.labelMonthContainer {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    height: 52px;
+    width: 120px;
+    top: -2px;
+    left: -2px;
+}
+
+.monthKey {
+    position: relative;
+    top: 10px;
+}

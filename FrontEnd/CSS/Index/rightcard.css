@@ -1,0 +1,212 @@
+.flex-child-element:last-child {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: normal;
+    align-items: normal;
+    align-content: center;
+}
+
+#filter {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+    flex: 0 1 auto;
+    align-self: auto;
+    padding: 10px;
+    margin: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.filterText {
+    margin: 0 10px;
+}
+
+
+/* Dropdown Button */
+
+.dropbtnCategoryFilter {
+    font-family: 'Poppins';
+    color: black;
+    padding: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    min-width: 150px;
+    background: white;
+    border: 2px var(--primary-color) solid;
+}
+
+.dropbtnCategoryFilter:hover,
+.dropbtnCategoryFilter:focus {
+    background-color: #F8F8F8;
+}
+
+.dropdownCategoryFilter {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdownCategoryFilter-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 150px;
+    box-shadow: 8px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdownCategoryFilter-content a {
+    color: black;
+    padding: 6px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdownCategoryFilter-content a:hover {
+    background: #ddd;
+}
+
+.showCategoryFilter {
+    display: block;
+}
+
+.dropbtnOrderFilter {
+    font-family: 'Poppins';
+    color: black;
+    padding: 4px;
+    font-size: 15px;
+    cursor: pointer;
+    min-width: 150px;
+    background: white;
+    border: 2px var(--primary-color) solid;
+}
+
+.dropbtnOrderFilter:hover,
+.dropbtnOrderFilter:focus {
+    background: #F8F8F8;
+}
+
+.dropdownOrderFilter {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdownOrderFilter-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 150px;
+    box-shadow: 8px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdownOrderFilter-content a {
+    color: black;
+    padding: 6px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdownOrderFilter-content a:hover {
+    background: #ddd;
+}
+
+.showOrderFilter {
+    display: block;
+}
+
+#dayTotal {
+    text-align: center;
+    display: block;
+    flex: 0 1 auto;
+    align-self: auto;
+}
+
+#dayTotal h1 {
+    display: inline-block;
+}
+
+#cards {
+    text-align: center;
+    /* border: 1px solid #ccc; */
+    display: block;
+    align-self: stretch;
+    overflow-y: scroll;
+}
+
+#cards::-webkit-scrollbar {
+    display: none;
+}
+
+#cards {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+#cards .dayCards {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 10px;
+    background: #E8E8E8;
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+#cards .dayCards ul {
+    text-align: left;
+    min-width: 240px;
+}
+
+#cards .dayCards #spendText {
+    width: 200px;
+    text-align: left;
+    font-size: 13px;
+    min-width: 240px;
+}
+
+#cards .dayCards .deleteEditButton button {
+    background: none;
+    border: none;
+}
+
+#cards .dayCards .deleteEditButton button:hover {
+    cursor: pointer;
+    background: #DCDCDC;
+}
+
+.edit {
+    color: var(--primary-color);
+    padding: 10px;
+    margin: 0 5px;
+}
+
+.delete {
+    color: red;
+    padding: 10px;
+    margin: 0 5px;
+}
+
+#addButton {
+    text-align: center;
+    display: block;
+    flex: 0 1 auto;
+    align-self: auto;
+    margin-top: auto;
+}
+
+.addButon {
+    background-color: var(--primary-color);
+    padding: 15px;
+    margin: 20px 0;
+    width: 150px;
+    align-self: center;
+    border-radius: 5px;
+}
+
+.addButon:hover {
+    cursor: pointer;
+    background-color: hsl(198, 99%, 42%);
+}

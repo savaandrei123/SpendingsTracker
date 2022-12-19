@@ -1,0 +1,20 @@
+.flex-parent-element {
+    display: flex;
+    margin-top: 10px;
+}
+
+.flex-child-element {
+    flex: 1;
+    margin: 0;
+    height: 830px;
+}
+
+.flex-child-element:first-child {
+    margin: 0 20px;
+    border-right: 1px black solid;
+}
+
+.flex-child-element:last-child {
+    margin: 0 20px 0 0;
+}
+

@@ -1,0 +1,93 @@
+.wrapper {
+    height: 100vh;
+}
+
+.myColor {
+    background-image: linear-gradient(to right, var(--primary-color) 50%, var(--secondary-color) 150%);
+}
+
+.myShadow {
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.myBtn {
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 20px;
+    background-image: linear-gradient(to right, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border: none;
+}
+
+.myBtn:hover {
+    background-image: linear-gradient(to right, var(--secondary-color) 0%, var(--primary-color) 100%);
+}
+
+.myHr {
+    height: 2px;
+    border-radius: 100px;
+}
+
+.myLinkBtn {
+    border-radius: 100px;
+    width: 50%;
+    border: 2px solid #fff;
+}
+
+.pinBox {
+    --width: 296px;
+    --height: 74px;
+    --spacing: 47px;
+    display: inline-block;
+    position: relative;
+    width: var(--width);
+    height: var(--height);
+    background-image: url(https://i.stack.imgur.com/JbkZl.png);
+    margin-left: 90px;
+    margin-bottom: 10px;
+}
+
+.pinEntry {
+    position: absolute;
+    padding-left: 21px;
+    font-family: courier, monospaced;
+    font-size: var(--spacing);
+    height: var(--height);
+    letter-spacing: var(--spacing);
+    background-color: transparent;
+    border: 0;
+    outline: none;
+    clip: rect(0px, calc(var(--width) - 21px), var(--height), 0px);
+}
+
+#errorRegisterMessage,
+#errorValidationEmailMessage,
+#errorLoginMessage {
+    display: none;
+    font-size: 18px;
+    font-weight: bold;
+    border: 2px solid;
+    color: #D8000C;
+    background-color: #FFBABA;
+    padding: 10px 0;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.errorMessageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#insertRegisterError,
+#insertValidationEmailError,
+#insertLoginError {
+    margin: 0 15px;
+}
+
+@media (max-width: 720px) {
+    .wrapper {
+        margin: 2px;
+    }
+}

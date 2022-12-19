@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../CSS/Shared/root.css">
+    <link rel="stylesheet" href="../CSS/Shared/style.css">
+    <link rel="stylesheet" href="../CSS/Shared/mainNav.css">
+    <link rel="stylesheet" href="../CSS/Account/account.css">
+    <!-- Jquery Script -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+
+    <script src="https://kit.fontawesome.com/54cbe89854.js" crossorigin="anonymous"></script>
+
+    <!-- JavaScript Scripts -->
+    <script src="../JavaScript/Shared/dropdownCurrency.js"></script>
+    <script src="../JavaScript/Account/dropdownPicture.js"></script>
+    <script src="../JavaScript/Shared/loadingAnimation.js"></script>
+    <script src="../JavaScript/Account/fetchSpendingsData.js"></script>
+    <script src="../JavaScript/Account/userData.js"></script>
+    <script src="../JavaScript/Shared/ballsAnimation.js"></script>
+    <script src="../JavaScript/Authentification/fetchCredentials.js"></script>
+    <script src="../JavaScript/Shared/checkSession.js"></script>
+    <title>Document</title>
+
+</head>
+
+<body onload='checkSession(),getCurrentCurrency(),getCurrentPicture(),totalSpendingAccount(),ballsAnimation(),getUserDetails(),setUserDataText()'>
+
+    <div id="main-nav">
+        <ul id="navTitle" onclick="goToHome()">
+            <li><i class="fa-solid fa-dollar-sign fa-2x"></i></li>
+            <li>
+                <h1>Spendings <span class="word">Tracker</span></h1>
+            </li>
+        </ul>
+
+        <ul>
+            <div class="dropdown">
+                <button onclick="showCurrencyDropdown()" class="dropbtn" id="dropbtn">.</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="#" onclick='changeCurrency("RON"),totalSpendingAccount()'>RON</a>
+                    <a href="#" onclick='changeCurrency("EUR"),totalSpendingAccount()'>EUR</a>
+                    <a href="#" onclick='changeCurrency("USD"),totalSpendingAccount()'>USD</a>
+                    <a href="#" onclick='changeCurrency("GBP"),totalSpendingAccount()'>GBP</a>
+                </div>
+            </div>
+
+            <li><a href="index.html">Spendings</a></li>
+            <li><a href="statistics.html">Statistics</a></li>
+            <li><a class="current" href="account.html">Account</a></li>
+            <li><a href="login_register.html" onclick="logout()">Log out</a></li>
+        </ul>
+    </div>
+
+
+    <div class="wrapper">
+        <div class="left">
+            <ul>
+                <li>
+                    <div class="dropdownPicture">
+                        <button onclick="showPictureDropdown()" class="dropbtnPicture" id="dropbtnPicture">Edit</button>
+                        <div id="myDropdownPicture" class="dropdownPicture-content">
+                            <img src="../Image/icon1.png">
+                            <img src="../Image/icon2.png">
+                            <img src="../Image/icon3.png">
+                            <img src="../Image/icon4.png">
+                            <img src="../Image/icon5.png">
+                            <img src="../Image/icon6.png">
+                            <img src="../Image/icon7.png">
+                            <img src="../Image/icon8.png">
+                            <img src="../Image/icon9.png">
+                        </div>
+                    </div>
+                </li>
+
+                <li><img id="changePicture" alt="user"></li>
+                <li>
+                    <h4 id="name-text-account">user@mail.com</h4>
+                </li>
+        </div>
+        <div class="right">
+            <div class="info">
+                <h3>Information</h3>
+                <div class="info_data">
+                    <div class="data">
+                        <h4>Email</h4>
+                        <p id="email-text-account">user@mail.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="details">
+                <h3>Overview</h3>
+                <div class="details_data">
+                    <div class="data">
+                        <h4>All Spendings</h4>
+                        <p id="all_spendings"> </p>
+                    </div>
+                    <div class="data">
+                        <h4>Bigest Spending</h4>
+                        <p id="biggest_spendings"> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

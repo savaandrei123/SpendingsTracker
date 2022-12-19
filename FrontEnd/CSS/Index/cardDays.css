@@ -1,0 +1,22 @@
+.cards-days-container {
+    display: grid;
+    grid-template-columns: repeat(6, auto);
+    grid-template-rows: 1fr 1fr;
+    /* grid-column-gap: 20px; */
+    grid-row-gap: 20px;
+    justify-items: center;
+    align-items: center;
+}
+
+.btn-day {
+    color: black;
+    border: none;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    height: 64px;
+    width: 72px;
+    text-align: center;
+    align-items: center;
+    border: black 2px solid;
+}
